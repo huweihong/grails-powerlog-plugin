@@ -1,0 +1,19 @@
+default.addLogLevel.message=已经为{0}添加了日志跟踪，并设置为 {1}
+default.changeLogLevel.message={0}的日志级别已经变更为 {1}
+default.deletLogLevel.message={0}的日志跟踪已经删除！
+default.addAppender.message={0}添加了Appender：{1}
+
+logConfig.label=日志配置
+logConfig.logger.label=Logger
+logConfig.level.label=日志级别
+logConfig.type.label=Logger类型
+logConfig.appenders.label=Appender
+
+appender.label=Appender
+appender.name.label=名称
+appender.pattern.label=日志模式
+appender.appenderClass.label=日志类
+appender.propertyJson.label=其他属性
+
+default.button.edit.label=编辑
+default.button.delete.label=删除

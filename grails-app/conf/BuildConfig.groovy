@@ -21,3 +21,8 @@ grails.project.dependency.resolution = {
            test group: 'org.cometd.java', name: 'cometd-java-client', version: cometdVer
     }
 }
+grails.project.dependency.distribution = {
+    remoteRepository(id: "pluginSnapshots", url: "http://ok988cis.eicp.net:8080/artifactory/plugins-snapshot-local/") {
+        authentication username: "hwh", password: "s4062012#"
+    }
+}

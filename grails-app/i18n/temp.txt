@@ -15,5 +15,6 @@ appender.pattern.label=日志模式
 appender.appenderClass.label=日志类
 appender.propertyJson.label=其他属性
 
-default.button.edit.label=编辑
-default.button.delete.label=删除
+default.property.button.delete.label=删除属性
+default.property.button.edit.label=编辑属性
+default.property.button.save.label=保存属性

@@ -1,12 +1,8 @@
 <%@ page import="grails.converters.JSON" %>
-<g:javascript library="jquery" />
-<g:javascript library="jquery.dataTables.min" />
-<g:javascript library="application" />
 <div>
     <fieldset>
-        <legend>${message(code: 'appender.propertyJson.label', default: '其他属性')}</legend>
-        <p><button id="newProperty" href="" class="btn" >${message(code: 'default.button.createConfig.label', default: '新增属性')}</button></p>
-        <table id="properties">
+        <p><button id="newProperty" href="" class="btn btn-warning" >${message(code: 'default.button.createConfig.label', default: '新增属性')}</button></p>
+        <table id="properties" class="list">
             <thead>
                 <tr>
                     <th>名称</th>
@@ -21,8 +17,8 @@
                         <tr>												
                             <td>${json.key}</td>
                             <td>${json.value}</td>
-                            <td><a class="edit" href="">Edit</a></td>
-                            <td><a class="delete" href="">Delete</a></td>
+                            <td><a class="edit btn" href="">${message(code: 'default.property.button.edit.label', default: 'Edit Property')}</a></td>
+                            <td><a class="delete btn btn-danger" href="">${message(code: 'default.property.button.delete.label', default: 'Delete Property')}</a></td>
                         </tr>
                     </g:each>
                 </g:if>
@@ -39,6 +35,7 @@
                         "bSort": false,
                         "bInfo": false,
                         "bAutoWidth": false,
+                        "bFilter": false,
                         "oLanguage": {
                             "sEmptyTable":"请添加配置项！",
                             
@@ -57,17 +54,17 @@
             if ( nEditing !== null && nEditing != nRow ) {
                 /* A different row is being edited - the edit should be cancelled and this row edited */
                 restoreRow( oTable, nEditing );
-                editRow( oTable, nRow );
+                editRow( oTable, nRow ,"${message(code: 'default.property.button.save.label', default: 'Save Property')}");
                 nEditing = nRow;
             }
-            else if ( nEditing == nRow && this.innerHTML == "Save" ) {
+            else if ( nEditing == nRow && this.innerHTML == "${message(code: 'default.property.button.save.label', default: 'Save Property')}" ) {
                 /* This row is being edited and should be saved */
-                nEditing=saveRow( oTable, nEditing );
+                nEditing=saveRow( oTable, nEditing ,"${message(code: 'default.property.button.edit.label', default: 'Edit Property')}" );
                 
             }
             else {
                 /* No row currently being edited */
-                editRow( oTable, nRow );
+                editRow( oTable, nRow ,"${message(code: 'default.property.button.save.label', default: 'Save Property')}");
                 nEditing = nRow;
             }
         } );
@@ -75,9 +72,9 @@
         $('#newProperty').click( function (e) {
             e.preventDefault();
              
-            var aiNew = oTable.fnAddData( [ '', '','<a class="edit" href="">Edit</a>', '<a class="delete" href="">Delete</a>' ] );
+            var aiNew = oTable.fnAddData( [ '', '',"<a class='btn' href=''>${message(code: 'default.property.button.edit.label', default: 'Edit Property')}</a>", "<a class='btn btn-danger' href=''>${message(code: 'default.property.button.delete.label', default: 'Delete Property')}</a>" ] );
             var nRow = oTable.fnGetNodes( aiNew[0] );
-            editRow( oTable, nRow );
+            editRow( oTable, nRow ,"${message(code: 'default.property.button.save.label', default: 'Save Property')}");
             nEditing = nRow;
         } );
     

@@ -24,5 +24,7 @@ class LogController {
                 }
            }
         }
+        def map=[:]
+        render map
     }
 }
